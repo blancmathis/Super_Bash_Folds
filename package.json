@@ -44,10 +44,10 @@
     "preview": "npm run check:public-dist && vite preview --host 0.0.0.0"
   },
   "devDependencies": {
-    "@types/three": "^0.185.1",
-    "happy-dom": "^20.10.6",
+    "@types/three": "^0.185.3",
+    "happy-dom": "^20.11.1",
     "typescript": "^7.0.2",
-    "vite": "^8.1.5",
+    "vite": "^8.2.0",
     "vitest": "^4.1.10"
   },
   "dependencies": {
