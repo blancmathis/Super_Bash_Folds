@@ -14,7 +14,7 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern public/assets --ignore-pattern public/play"
   },
   "dependencies": {
-    "next": "16.2.10",
+    "next": "16.3.4",
     "react": "19.2.7",
     "react-dom": "19.2.7"
   },
