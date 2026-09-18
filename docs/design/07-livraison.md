@@ -20,7 +20,7 @@ Le contrat optionnel `gameplay.normals` est implémenté dans le schéma, la val
 | Suite complète avec `npm test -- --maxWorkers=2` | 385 tests, 28 fichiers : réussite ; 62 tests ajoutés au total |
 | `npx tsc --noEmit` | Réussite |
 | `npm run check:public-assets` | Réussite dans la validation publique |
-| `npm run check:public-history` | Réussite sur l'historique de départ ; à revérifier après commit |
+| `npm run check:public-history` | Réussite sur l'historique de départ puis après le premier commit (774 objets vérifiés) |
 | `npm run check:public-source` | Réussite |
 | `npm run fighter:check` et `npm run stage:check` | Réussite ; registres synchronisés |
 | `npm run validate:open-fighters` | Réussite du contrat ; aucun des 14 prototypes n'a 50 animations directes |
@@ -29,7 +29,7 @@ Le contrat optionnel `gameplay.normals` est implémenté dans le schéma, la val
 
 **Limite du lancement global :** la première commande `npm run validate:public`, avec le parallélisme par défaut, s'est arrêtée sur trois dépassements de 5 secondes dans des tests CLI de packs, dont deux tests déjà présents. Les assertions n'ont pas été supprimées et les délais n'ont pas été augmentés. La suite complète a ensuite réussi avec deux workers, et le build a été exécuté séparément. Cela suggère un problème de contention sur cette machine ; cette relance ne prouve pas à elle seule que tous les environnements CI sont exempts de délais.
 
-**Avertissements conservés :** `npm ci` a signalé quatre vulnérabilités de dépendances (trois modérées, une haute), non corrigées dans ce travail de conception. Le build avertit d'un chunk de rendu 3D dépassant 500 kB ; les budgets propres au projet passent. Aucun audit de sécurité complet ni profilage FPS sur plusieurs machines n'a été réalisé.
+**Avertissements conservés :** `npm ci` a signalé quatre vulnérabilités de dépendances (trois modérées, une haute), non corrigées dans ce travail de conception. Le build avertit d'un chunk de rendu 3D dépassant 500 kB ; les budgets propres au projet passent. Aucun audit de sécurité complet ni profilage FPS sur plusieurs machines n'a été réalisé. Au push, GitHub a également signalé 47 alertes de vulnérabilité sur la branche par défaut (4 critiques, 24 hautes, 19 modérées). Ce signalement a un périmètre potentiellement différent du `npm ci` racine ; les alertes individuelles n'ont pas été examinées et aucun correctif de dépendances n'est inclus ici.
 
 ## Non réalisé / non annoncé
 
