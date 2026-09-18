@@ -96,3 +96,41 @@ describe("fighter pack CLI", () => {
     expect(JSON.parse(readFileSync(workspace.manifest3D, "utf8")).fighters).toEqual({});
   });
 });
+
+const authoredWorkspace = () => {
+  const workspace = createWorkspace();
+  const directory = join(workspace.packs, "rgs-stick");
+  cpSync(join(projectRoot, "fighters/rgs-stick"), directory, { recursive: true });
+  const path = join(directory, "fighter.json");
+  const pack = JSON.parse(readFileSync(path, "utf8"));
+  return { workspace, path, pack };
+};
+
+describe("authored normal pack integration", () => {
+  it("serializes optional normals into the generated registry", () => {
+    const { workspace, path, pack } = authoredWorkspace();
+    pack.gameplay.normals = { jab: { label: "Authored jab", damage: 9, active: 4, hitboxes: [
+      { offset: { x: 20, y: 4 }, radius: 12, activeStart: 0, activeEnd: 3 },
+    ] } };
+    writeFileSync(path, JSON.stringify(pack));
+    runCli(workspace, "build");
+    const registry = readFileSync(workspace.registry, "utf8");
+    expect(registry).toContain('"normals"');
+    expect(registry).toContain('"label": "Authored jab"');
+    expect(registry).toContain('"activeEnd": 3');
+    expect(() => runCli(workspace, "check")).not.toThrow();
+  });
+  it.each([
+    ["ready", { jab: { damage: -1 } }],
+    ["draft", { jab: { damage: -1 } }],
+    ["ready", { "up-special": { damage: 3 } }],
+    ["ready", { jab: { hitboxes: [{ offset: { x: 0, y: 0 }, radius: 8, activeEnd: 2 }] } }],
+    ["draft", null],
+  ])("rejects invalid normals even in a %s pack", (status, normals) => {
+    const { workspace, path, pack } = authoredWorkspace();
+    pack.status = status;
+    pack.gameplay.normals = normals;
+    writeFileSync(path, JSON.stringify(pack));
+    expect(() => runCli(workspace, "build")).toThrow(/gameplay\.normals/);
+  });
+});

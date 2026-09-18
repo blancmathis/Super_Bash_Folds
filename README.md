@@ -47,6 +47,10 @@ game. It includes:
 - fighter and stage pack generators, validators, and an Animation Lab;
 - automated public-content, history, test, build, and performance checks.
 
+The [original-universe design proposal](docs/design/README.md) develops six
+characters, art direction, combat, stages and a playtest plan. Its numerical
+prototypes are not finished fighters and are not added to the playable roster.
+
 The highest-priority goal is a flagship original fighter with a complete,
 purpose-built animation set. Artists, animators, game designers, developers,
 and playtesters are all welcome.

@@ -5,6 +5,10 @@ Issues own implementation details and acceptance criteria.
 
 ## Now — establish the original identity
 
+The [original-universe proposal](docs/design/README.md) develops a concrete
+direction and a two-fighter first slice. It remains a design proposal, not a
+commitment to ship every character or mechanic described.
+
 - Create the first flagship original fighter with 50 purpose-built animation
   slots and a competitively coherent move set.
 - Add a second original stage and improve the public roster's visual
