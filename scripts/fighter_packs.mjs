@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { spawnSync } from "node:child_process";
+import { validateNormalOverrides } from "./normal_attack_contract.mjs";
 import {
   access,
   mkdir,
@@ -68,6 +69,10 @@ const validateCommon = (pack, directoryName) => {
   assert(pack.id === directoryName, `${directoryName}: id ${pack.id} does not match the directory`);
   assert(pack.kind === "2d" || pack.kind === "3d", `${pack.id}: kind must be 2d or 3d`);
   assert(positiveInteger(pack.order), `${pack.id}: order must be a positive integer`);
+  if (isObject(pack.gameplay) && Object.hasOwn(pack.gameplay, "normals")) {
+    // Validate authored data in drafts too; draft status only defers missing art.
+    validateNormalOverrides(pack.gameplay.normals, `${pack.id}: gameplay.normals`);
+  }
   assert(isObject(pack.identity), `${pack.id}: identity is missing`);
   for (const key of ["displayName", "archetype", "playstyle"]) {
     assert(nonEmpty(pack.identity[key]), `${pack.id}: identity.${key} is missing`);

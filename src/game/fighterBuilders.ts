@@ -58,11 +58,50 @@ export const standardThrows = (power = 1): Record<ThrowName, ThrowDefinition> =>
   down: { damage: 6 * power, angle: 68, baseKnockback: 34, knockbackGrowth: 0.65 },
 });
 
+export type NormalMoveName = Exclude<MoveName,
+  "neutral-special" | "side-special" | "up-special" | "down-special"
+>;
+
+/** Absolute authored values, applied after the legacy power/speed/reach profile. */
+export type NormalAttackOverride = Partial<Pick<AttackDefinition,
+  "label" | "startup" | "active" | "recovery" | "damage" | "angle" |
+  "baseKnockback" | "knockbackGrowth" | "hitstop" | "hitstun" |
+  "radius" | "offset" | "hitboxes" | "shieldDamage" |
+  "movement" | "airMovement" | "chargeable" | "maxChargeFrames"
+>>;
+
+export type NormalAttackOverrides = Readonly<Partial<Record<NormalMoveName, NormalAttackOverride>>>;
+
+/** Never retain mutable references to an author's vectors or hitbox arrays. */
+const applyNormalOverride = (
+  base: AttackDefinition,
+  authored: NormalAttackOverride,
+): AttackDefinition => {
+  const result: AttackDefinition = { ...base, ...authored };
+  if (authored.damage !== undefined) {
+    result.hitstop = authored.hitstop ?? Math.max(3, Math.round(authored.damage * 0.45));
+    result.shieldDamage = authored.shieldDamage ?? authored.damage * 0.75 + 2;
+  }
+  if (authored.baseKnockback !== undefined) {
+    result.hitstun = authored.hitstun ?? Math.max(7, Math.round(authored.baseKnockback * 0.35));
+  }
+  result.offset = { ...result.offset };
+  if (result.movement) result.movement = { ...result.movement };
+  if (result.airMovement) result.airMovement = { ...result.airMovement };
+  if (result.hitboxes) result.hitboxes = result.hitboxes.map((hitbox) => ({
+    ...hitbox,
+    offset: { ...hitbox.offset },
+    ...(hitbox.endOffset ? { endOffset: { ...hitbox.endOffset } } : {}),
+  }));
+  return result;
+};
+
 export interface FighterMoveProfile {
   fighterName: string;
   power?: number;
   speed?: number;
   reach?: number;
+  normals?: NormalAttackOverrides;
   specials: Readonly<Record<
     "neutral-special" | "side-special" | "up-special" | "down-special",
     {
@@ -171,7 +210,7 @@ export const buildStandardAttacks = (
     );
   };
 
-  return {
+  const attacks: Record<MoveName, AttackDefinition> = {
     jab: normal("neutral attack", 3, 40, 25, 0.48, 3, 2, 9, 31, { x: 33, y: 4 }),
     "dash-attack": normal("dash attack", 10, 48, 44, 0.8, 7, 6, 22, 48, { x: 44, y: 1 }, { movement: { x: 270, y: 0 } }),
     "forward-tilt": normal("forward tilt", 9, 38, 40, 0.76, 7, 4, 17, 43, { x: 42, y: 5 }),
@@ -190,4 +229,14 @@ export const buildStandardAttacks = (
     "up-special": special("up-special"),
     "down-special": special("down-special"),
   };
+  if (profile.normals) {
+    // Pack validation rejects unknown keys. Iterate the closed normal family,
+    // so even a malformed caller cannot overwrite special moves via this path.
+    for (const name of Object.keys(attacks) as MoveName[]) {
+      if (name.endsWith("-special")) continue;
+      const authored = profile.normals[name as NormalMoveName];
+      if (authored) attacks[name] = applyNormalOverride(attacks[name], authored);
+    }
+  }
+  return attacks;
 };

@@ -1,0 +1,19 @@
+{
+  "baseCommit": "1028a3b739ef54efdcbe5a2ef0ad1714fe569c47",
+  "hashes": {
+    "kaykit-knight": "089e9b16097f0a23da4a130bb8d90463fdf141ba3cf8368412a3bbf5637b92de",
+    "george": "bf942fc7c422f46928fa2965c71406545cfe51e9da70e74e54a344703cc9be21",
+    "platformer": "a5c5fa205cf4d40caeeee07e6a7c3f44728be3825b056384949450d0c7087b53",
+    "wolf": "9a7b31a81c6a0acdb19cd2eed945c87a4c6b3f77cf9997f6a86f028624a574d7",
+    "cactus": "71a98806d126d4ef20e4df5366b7374d9aea0bcc482d72ec7fcb62ffbd9cd5f3",
+    "yeti": "13db3498edf43cbfb3a9b362be6b07bb333af9f98b3d31c13eec6685bb8148c8",
+    "quaternius-hero": "49558bb8537fc54408171b8d302fd26ffa9fe2b5193eba1c1284cf483d6894dd",
+    "rgs-stick": "3d37a3feea814f153d38fa5bb27212302cca15652c2f6fe385cf8e4d1b4e0e6a",
+    "dark-knight-2d": "7f6f2bcb095701d1bf23124f4dcbf51322bef69416edeef6fb2bee8651ddfe7f",
+    "knight-hero": "4e086187eb42579615b2586459b971997144771cb5fbad3a6829139fd6fa2d1f",
+    "kenney-toon": "82d2e91cc76ffe0d0f91884e0be652831a164d384f92b85848c7f558df7deacf",
+    "rgs-character-prototype": "2bcf1161b4cb2ec5937dca4eedb83629737cc3c1e1a638a6d6e0a05196dcdc2b",
+    "hormelz-melee": "45d3cbc49e7296ba98fe96320f6e100853afa8045154d49c5fd36c8ed3b95845",
+    "hormelz-knight": "48ce0c967751215dcba02702a9e36c84fc61c8405dfb195601af15e08ee49a7a"
+  }
+}

@@ -16,28 +16,72 @@
     "effects"
   ],
   "properties": {
-    "$schema": { "type": "string" },
-    "schemaVersion": { "const": 1 },
-    "status": { "enum": ["draft", "ready"] },
-    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
-    "kind": { "enum": ["2d", "3d"] },
-    "order": { "type": "integer", "minimum": 1 },
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "ready"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "kind": {
+      "enum": [
+        "2d",
+        "3d"
+      ]
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 1
+    },
     "identity": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["displayName", "archetype", "playstyle", "colors"],
+      "required": [
+        "displayName",
+        "archetype",
+        "playstyle",
+        "colors"
+      ],
       "properties": {
-        "displayName": { "type": "string", "minLength": 1 },
-        "archetype": { "type": "string", "minLength": 1 },
-        "playstyle": { "type": "string", "minLength": 1 },
+        "displayName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archetype": {
+          "type": "string",
+          "minLength": 1
+        },
+        "playstyle": {
+          "type": "string",
+          "minLength": 1
+        },
         "colors": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["primary", "secondary", "accent"],
+          "required": [
+            "primary",
+            "secondary",
+            "accent"
+          ],
           "properties": {
-            "primary": { "$ref": "#/$defs/color" },
-            "secondary": { "$ref": "#/$defs/color" },
-            "accent": { "$ref": "#/$defs/color" }
+            "primary": {
+              "$ref": "#/$defs/color"
+            },
+            "secondary": {
+              "$ref": "#/$defs/color"
+            },
+            "accent": {
+              "$ref": "#/$defs/color"
+            }
           }
         }
       }
@@ -46,64 +90,173 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "size", "spriteReferenceHeight", "weight", "dash", "dashFrames",
-        "run", "air", "gravity", "fall", "fastFall", "jump", "doubleJump",
-        "jumpSquat", "shortHop", "specials"
+        "size",
+        "spriteReferenceHeight",
+        "weight",
+        "dash",
+        "dashFrames",
+        "run",
+        "air",
+        "gravity",
+        "fall",
+        "fastFall",
+        "jump",
+        "doubleJump",
+        "jumpSquat",
+        "shortHop",
+        "specials"
       ],
       "properties": {
         "size": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["width", "height"],
+          "required": [
+            "width",
+            "height"
+          ],
           "properties": {
-            "width": { "type": "number", "exclusiveMinimum": 0 },
-            "height": { "type": "number", "exclusiveMinimum": 0 }
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
           }
         },
-        "spriteReferenceHeight": { "type": "number", "exclusiveMinimum": 0 },
-        "weight": { "type": "number", "exclusiveMinimum": 0 },
-        "dash": { "type": "number", "exclusiveMinimum": 0 },
-        "dashFrames": { "type": "integer", "minimum": 1 },
-        "run": { "type": "number", "exclusiveMinimum": 0 },
-        "air": { "type": "number", "exclusiveMinimum": 0 },
-        "gravity": { "type": "number", "exclusiveMinimum": 0 },
-        "fall": { "type": "number", "exclusiveMinimum": 0 },
-        "fastFall": { "type": "number", "exclusiveMinimum": 0 },
-        "jump": { "type": "number", "exclusiveMinimum": 0 },
-        "doubleJump": { "type": "number", "exclusiveMinimum": 0 },
-        "jumpSquat": { "type": "integer", "minimum": 1 },
-        "shortHop": { "type": "number", "exclusiveMinimum": 0 },
-        "power": { "type": "number", "exclusiveMinimum": 0 },
-        "speed": { "type": "number", "exclusiveMinimum": 0 },
-        "reach": { "type": "number", "exclusiveMinimum": 0 },
+        "spriteReferenceHeight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "weight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "dash": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "dashFrames": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "run": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "air": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "gravity": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "fall": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "fastFall": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "jump": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "doubleJump": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "jumpSquat": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "shortHop": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "power": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "speed": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "reach": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
         "specials": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["neutral-special", "side-special", "up-special", "down-special"],
+          "required": [
+            "neutral-special",
+            "side-special",
+            "up-special",
+            "down-special"
+          ],
           "properties": {
-            "neutral-special": { "$ref": "#/$defs/special" },
-            "side-special": { "$ref": "#/$defs/special" },
-            "up-special": { "$ref": "#/$defs/special" },
-            "down-special": { "$ref": "#/$defs/special" }
+            "neutral-special": {
+              "$ref": "#/$defs/special"
+            },
+            "side-special": {
+              "$ref": "#/$defs/special"
+            },
+            "up-special": {
+              "$ref": "#/$defs/special"
+            },
+            "down-special": {
+              "$ref": "#/$defs/special"
+            }
           }
+        },
+        "normals": {
+          "$ref": "#/$defs/normalOverrides"
         }
       }
     },
     "visual": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["sourceFacing", "attribution", "sourcePage", "license"],
+      "required": [
+        "sourceFacing",
+        "attribution",
+        "sourcePage",
+        "license"
+      ],
       "properties": {
-        "sourceFacing": { "enum": ["left", "right"] },
-        "attribution": { "type": "string", "minLength": 1 },
-        "sourcePage": { "type": "string", "format": "uri" },
+        "sourceFacing": {
+          "enum": [
+            "left",
+            "right"
+          ]
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourcePage": {
+          "type": "string",
+          "format": "uri"
+        },
         "license": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["id"],
+          "required": [
+            "id"
+          ],
           "properties": {
-            "id": { "type": "string", "minLength": 1 },
-            "url": { "type": "string", "format": "uri" }
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
           }
         }
       }
@@ -111,32 +264,255 @@
     "effects": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["materials", "traits"],
+      "required": [
+        "materials",
+        "traits"
+      ],
       "properties": {
         "materials": {
           "type": "object",
           "additionalProperties": {
-            "enum": ["physical", "blade", "heavy", "fire", "electric", "energy", "wind", "water"]
+            "enum": [
+              "physical",
+              "blade",
+              "heavy",
+              "fire",
+              "electric",
+              "energy",
+              "wind",
+              "water"
+            ]
           }
         },
         "traits": {
           "type": "array",
           "uniqueItems": true,
-          "items": { "enum": ["blade", "heavy", "electric"] }
+          "items": {
+            "enum": [
+              "blade",
+              "heavy",
+              "electric"
+            ]
+          }
         }
       }
     }
   },
   "$defs": {
-    "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$"
+    },
     "special": {
       "type": "object",
-      "required": ["label", "damage"],
+      "required": [
+        "label",
+        "damage"
+      ],
       "properties": {
-        "label": { "type": "string", "minLength": 1 },
-        "damage": { "type": "number", "minimum": 0 }
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "damage": {
+          "type": "number",
+          "minimum": 0
+        }
       },
       "additionalProperties": true
+    },
+    "normalVector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      }
+    },
+    "normalHitbox": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offset",
+        "radius"
+      ],
+      "properties": {
+        "offset": {
+          "$ref": "#/$defs/normalVector"
+        },
+        "endOffset": {
+          "$ref": "#/$defs/normalVector"
+        },
+        "radius": {
+          "type": "number",
+          "minimum": 4
+        },
+        "activeStart": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "activeEnd": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "damageMultiplier": {
+          "type": "number",
+          "minimum": 0
+        },
+        "knockbackMultiplier": {
+          "type": "number",
+          "minimum": 0
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "kind": {
+          "enum": [
+            "sweet",
+            "normal",
+            "sour"
+          ]
+        }
+      },
+      "dependentRequired": {
+        "endOffset": [
+          "activeEnd"
+        ]
+      }
+    },
+    "normalAttack": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "label": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "startup": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "active": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "recovery": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "damage": {
+          "type": "number",
+          "minimum": 0
+        },
+        "angle": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 360
+        },
+        "baseKnockback": {
+          "type": "number",
+          "minimum": 0
+        },
+        "knockbackGrowth": {
+          "type": "number",
+          "minimum": 0
+        },
+        "hitstop": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hitstun": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "radius": {
+          "type": "number",
+          "minimum": 4
+        },
+        "offset": {
+          "$ref": "#/$defs/normalVector"
+        },
+        "hitboxes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/$defs/normalHitbox"
+          }
+        },
+        "shieldDamage": {
+          "type": "number",
+          "minimum": 0
+        },
+        "movement": {
+          "$ref": "#/$defs/normalVector"
+        },
+        "airMovement": {
+          "$ref": "#/$defs/normalVector"
+        },
+        "chargeable": {
+          "type": "boolean"
+        },
+        "maxChargeFrames": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "normalOverrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "jab": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "dash-attack": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "forward-tilt": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "up-tilt": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "down-tilt": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "forward-smash": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "up-smash": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "down-smash": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "neutral-air": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "forward-air": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "back-air": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "up-air": {
+          "$ref": "#/$defs/normalAttack"
+        },
+        "down-air": {
+          "$ref": "#/$defs/normalAttack"
+        }
+      }
     }
   }
 }

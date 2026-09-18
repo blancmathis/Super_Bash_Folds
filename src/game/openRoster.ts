@@ -34,6 +34,7 @@ interface OpenFighterSeed {
   power?: number;
   speed?: number;
   reach?: number;
+  normals?: FighterMoveProfile["normals"];
   specials: FighterMoveProfile["specials"];
 }
 
@@ -72,6 +73,7 @@ const createOpenFighter = (seed: OpenFighterSeed): FighterDefinition => ({
     power: seed.power,
     speed: seed.speed,
     reach: seed.reach,
+    normals: seed.normals,
     specials: seed.specials,
   }),
   throws: standardThrows(seed.power ?? 1),

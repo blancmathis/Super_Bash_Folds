@@ -109,12 +109,71 @@ the fighter thumbnail. After manually replacing multiple fighter portraits or
 stage previews, run `npm run optimize:ui-assets`.
 
 Stats, movement tuning, animation mapping, all four special moves, and effects
-already supported by the engine are configurable in the pack. Standard attack
-logic is still shared by the engine; follow
-[issue #11](https://github.com/Swarek/Super_Bash_Folds/issues/11) for the pack
-contract that will expose it. A completely new mechanic, such as a new kind of
-tether, a transformation, or unsupported projectile behavior, still requires
-an engine implementation before the pack can reference it.
+already supported by the engine are configurable in the pack. Optional
+`gameplay.normals` now authors the thirteen normal attacks independently;
+omitting it preserves every existing attack. See the contract below. A
+completely new mechanic, such as a new kind of tether, a transformation, or
+unsupported projectile behavior, still requires an engine implementation
+before the pack can reference it.
+
+## Author normal attacks
+
+Add `gameplay.normals` to `fighter.json`, keyed by any of `jab`, `dash-attack`,
+`forward-tilt`, `up-tilt`, `down-tilt`, `forward-smash`, `up-smash`, `down-smash`,
+`neutral-air`, `forward-air`, `back-air`, `up-air`, or `down-air`:
+
+```json
+"normals": {
+  "forward-tilt": {
+    "label": "Open palm",
+    "damage": 10,
+    "startup": 9,
+    "active": 4,
+    "recovery": 22,
+    "hitboxes": [
+      {
+        "offset": { "x": 30, "y": 4 },
+        "endOffset": { "x": 52, "y": 8 },
+        "radius": 16,
+        "activeStart": 0,
+        "activeEnd": 3
+      }
+    ]
+  }
+}
+```
+
+These are **absolute runtime values**, applied after `power`, `speed`, and
+`reach`; unspecified fields inherit the standard family. Timings use frames
+at 60 Hz. Offsets use local world units, positive x forward and positive y up.
+Hitbox windows are zero-based within the active phase, with inclusive ends.
+An animated `endOffset` requires an explicit `activeEnd`; all windows must fit
+within the move's active frames. Hitbox radius is at least 4 world units, and
+chains contain 1–16 entries. Without an authored chain, the existing generated
+hitboxes remain in use.
+
+Changing `damage` recomputes the default `hitstop` and `shieldDamage` unless
+those fields are explicitly set. Changing `baseKnockback` similarly recomputes
+the legacy `hitstun` field unless explicitly set; launch hitstun continues to
+follow the engine's actual knockback rules. Other fields do not gain hidden
+scaling or animation changes. To stop an inherited movement, author a zero
+vector; `null` and empty hitbox arrays are not reset operators.
+
+Allowed fields are declared by the editor schema and the CLI contract:
+label, timing, damage, angle, knockback, hitstop/hitstun, radius, offset,
+hitboxes, shield damage, ground/air movement and charge configuration.
+Unknown keys, special moves in this map, nonfinite values, invalid vectors and
+out-of-range active windows are rejected, including on draft packs. This
+extension does not add scripts, callbacks, new projectile behaviors or
+per-character state machines.
+
+Run `npm run fighter:build` and `npm run fighter:check` after editing. The
+registry is generated normally; never edit it manually. Verify the hitbox
+against its actual attack pose in the Animation Lab. Data validity is not
+animation readiness, fairness, or evidence of enjoyable play.
+
+Original character design proposals and **unpublished** numerical examples
+live in [`docs/design/`](../docs/design/README.md).
 
 ## Troubleshooting
 

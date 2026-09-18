@@ -1,0 +1,319 @@
+{
+  "jab": {
+    "label": "Toc",
+    "damage": 4,
+    "angle": 42,
+    "baseKnockback": 27,
+    "knockbackGrowth": 0.5,
+    "startup": 4,
+    "active": 3,
+    "recovery": 13,
+    "radius": 34,
+    "offset": {
+      "x": 33,
+      "y": 4
+    },
+    "hitboxes": [
+      {
+        "offset": {
+          "x": 16,
+          "y": 2
+        },
+        "radius": 17,
+        "damageMultiplier": 0.9,
+        "priority": 1,
+        "kind": "sour"
+      },
+      {
+        "offset": {
+          "x": 26,
+          "y": 4
+        },
+        "endOffset": {
+          "x": 33,
+          "y": 8
+        },
+        "radius": 21,
+        "activeStart": 0,
+        "activeEnd": 2,
+        "damageMultiplier": 1,
+        "priority": 2,
+        "kind": "normal"
+      }
+    ]
+  },
+  "dash-attack": {
+    "label": "Pas de porte",
+    "damage": 12,
+    "angle": 49,
+    "baseKnockback": 47,
+    "knockbackGrowth": 0.86,
+    "startup": 10,
+    "active": 5,
+    "recovery": 28,
+    "radius": 47,
+    "offset": {
+      "x": 41,
+      "y": 0
+    },
+    "movement": {
+      "x": 180,
+      "y": 0
+    }
+  },
+  "forward-tilt": {
+    "label": "Paume",
+    "damage": 11,
+    "angle": 32,
+    "baseKnockback": 45,
+    "knockbackGrowth": 0.84,
+    "startup": 9,
+    "active": 4,
+    "recovery": 23,
+    "radius": 48,
+    "offset": {
+      "x": 52,
+      "y": 5
+    },
+    "hitboxes": [
+      {
+        "offset": {
+          "x": 26,
+          "y": 2
+        },
+        "radius": 17,
+        "damageMultiplier": 0.9,
+        "priority": 1,
+        "kind": "sour"
+      },
+      {
+        "offset": {
+          "x": 45,
+          "y": 5
+        },
+        "endOffset": {
+          "x": 52,
+          "y": 9
+        },
+        "radius": 21,
+        "activeStart": 0,
+        "activeEnd": 3,
+        "damageMultiplier": 1,
+        "priority": 2,
+        "kind": "normal"
+      }
+    ]
+  },
+  "up-tilt": {
+    "label": "Soulève",
+    "damage": 10,
+    "angle": 92,
+    "baseKnockback": 36,
+    "knockbackGrowth": 0.7,
+    "startup": 8,
+    "active": 5,
+    "recovery": 23,
+    "radius": 46,
+    "offset": {
+      "x": 2,
+      "y": 51
+    }
+  },
+  "down-tilt": {
+    "label": "Ramasse-miettes",
+    "damage": 8,
+    "angle": 65,
+    "baseKnockback": 32,
+    "knockbackGrowth": 0.61,
+    "startup": 8,
+    "active": 4,
+    "recovery": 21,
+    "radius": 43,
+    "offset": {
+      "x": 43,
+      "y": -26
+    }
+  },
+  "forward-smash": {
+    "label": "Porte-four",
+    "damage": 20,
+    "angle": 35,
+    "baseKnockback": 64,
+    "knockbackGrowth": 1.12,
+    "startup": 19,
+    "active": 4,
+    "recovery": 38,
+    "radius": 55,
+    "offset": {
+      "x": 60,
+      "y": 5
+    },
+    "chargeable": true,
+    "maxChargeFrames": 55,
+    "hitboxes": [
+      {
+        "offset": {
+          "x": 30,
+          "y": 2
+        },
+        "radius": 17,
+        "damageMultiplier": 0.9,
+        "priority": 1,
+        "kind": "sour"
+      },
+      {
+        "offset": {
+          "x": 53,
+          "y": 5
+        },
+        "endOffset": {
+          "x": 60,
+          "y": 9
+        },
+        "radius": 21,
+        "activeStart": 0,
+        "activeEnd": 3,
+        "damageMultiplier": 1,
+        "priority": 2,
+        "kind": "normal"
+      }
+    ]
+  },
+  "up-smash": {
+    "label": "Grande fournée",
+    "damage": 18,
+    "angle": 87,
+    "baseKnockback": 61,
+    "knockbackGrowth": 1.06,
+    "startup": 17,
+    "active": 5,
+    "recovery": 35,
+    "radius": 54,
+    "offset": {
+      "x": 2,
+      "y": 62
+    },
+    "chargeable": true,
+    "maxChargeFrames": 55
+  },
+  "down-smash": {
+    "label": "Pose lourde",
+    "damage": 17,
+    "angle": 29,
+    "baseKnockback": 59,
+    "knockbackGrowth": 1.03,
+    "startup": 16,
+    "active": 6,
+    "recovery": 34,
+    "radius": 56,
+    "offset": {
+      "x": 0,
+      "y": -25
+    },
+    "chargeable": true,
+    "maxChargeFrames": 55
+  },
+  "neutral-air": {
+    "label": "Tour de four",
+    "damage": 11,
+    "angle": 49,
+    "baseKnockback": 45,
+    "knockbackGrowth": 0.81,
+    "startup": 8,
+    "active": 7,
+    "recovery": 24,
+    "radius": 46,
+    "offset": {
+      "x": 0,
+      "y": 3
+    }
+  },
+  "forward-air": {
+    "label": "Paume volante",
+    "damage": 15,
+    "angle": 39,
+    "baseKnockback": 54,
+    "knockbackGrowth": 0.98,
+    "startup": 13,
+    "active": 5,
+    "recovery": 29,
+    "radius": 50,
+    "offset": {
+      "x": 47,
+      "y": 4
+    }
+  },
+  "back-air": {
+    "label": "Revers de plaque",
+    "damage": 13,
+    "angle": 145,
+    "baseKnockback": 51,
+    "knockbackGrowth": 0.92,
+    "startup": 10,
+    "active": 4,
+    "recovery": 25,
+    "radius": 45,
+    "offset": {
+      "x": -42,
+      "y": 6
+    }
+  },
+  "up-air": {
+    "label": "Couvercle",
+    "damage": 11,
+    "angle": 84,
+    "baseKnockback": 43,
+    "knockbackGrowth": 0.8,
+    "startup": 9,
+    "active": 5,
+    "recovery": 23,
+    "radius": 46,
+    "offset": {
+      "x": 1,
+      "y": 53
+    },
+    "hitboxes": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 26
+        },
+        "radius": 17,
+        "damageMultiplier": 0.9,
+        "priority": 1,
+        "kind": "sour"
+      },
+      {
+        "offset": {
+          "x": -11,
+          "y": 53
+        },
+        "endOffset": {
+          "x": 13,
+          "y": 53
+        },
+        "radius": 21,
+        "activeStart": 0,
+        "activeEnd": 4,
+        "damageMultiplier": 1,
+        "priority": 2,
+        "kind": "normal"
+      }
+    ]
+  },
+  "down-air": {
+    "label": "Pilon",
+    "damage": 16,
+    "angle": 270,
+    "baseKnockback": 54,
+    "knockbackGrowth": 0.97,
+    "startup": 16,
+    "active": 4,
+    "recovery": 32,
+    "radius": 48,
+    "offset": {
+      "x": 0,
+      "y": -45
+    }
+  }
+}
